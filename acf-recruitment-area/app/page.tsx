@@ -106,7 +106,7 @@ export default function Home() {
     ];
 
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-(family-name:--font-geist-sans)">
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start"
               style={{width: "100vh", height: "100vh"}}>
 
@@ -125,7 +125,7 @@ export default function Home() {
             <div id="filter-wrapper" className="grid gap-6 md:grid-cols-2">
 
                 <div
-                    className="flex items-center ps-4 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
+                    className="flex items-center ps-4 bg-neutral-primary-soft border border-default rounded-base shadow-2xs">
                     <input id="show-schools" type="checkbox" value="shools" name="bordered-checkbox"
                            className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>
                     <label htmlFor="show-schools"
