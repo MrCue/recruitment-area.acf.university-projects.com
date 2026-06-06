@@ -54,7 +54,7 @@ export const detachments = [
         },
         type: pinTypes.detachment,
         color: pinColors.potentialDetachment,
-        state: pinStates.closed,
+        state: pinStates.potential,
     },
     {
         title: "Chindit",
@@ -84,7 +84,7 @@ export const detachments = [
         },
         type: pinTypes.detachment,
         color: pinColors.potentialDetachment,
-        state: pinStates.open,
+        state: pinStates.potential,
     },
     {
         title: "Kirkham & Weeton",
@@ -114,7 +114,7 @@ export const detachments = [
         },
         type: pinTypes.detachment,
         color: pinColors.potentialDetachment,
-        state: pinStates.closed,
+        state: pinStates.potential,
     },
     {
         title: "Thornton",
@@ -134,6 +134,6 @@ export const detachments = [
         },
         type: pinTypes.detachment,
         color: pinColors.potentialDetachment,
-        state: pinStates.closed,
+        state: pinStates.potential,
     },
 ]

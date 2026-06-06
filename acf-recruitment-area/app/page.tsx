@@ -1,21 +1,14 @@
 'use client';
 
-import {
-    APIProvider,
-    InfoWindow,
-    Map,
-    Pin,
-} from '@vis.gl/react-google-maps';
-import {
-    useCallback,
-    useState,
-} from "react";
+import {APIProvider, InfoWindow, Map, Pin,} from '@vis.gl/react-google-maps';
+import {useCallback, useState,} from "react";
 import {Circle} from "@/app/components/circle";
 import {pinTypes} from "@/app/components/pin-types";
 import {AdvancedMarkerWithRef} from "@/app/components/AdvancedMarkerWithRef";
 
 import {detachments} from "@/app/markers/detachments";
 import {schools} from "@/app/markers/schools";
+import {pinStates} from "@/app/components/pin-states";
 
 export default function Home() {
 
@@ -25,8 +18,45 @@ export default function Home() {
     const [selectedMarkerDetails, setSelectedMarkerDetails] = useState<MarkerDetails|null>(null);
     const [catchmentRadius, setCatchmentRadius] = useState<number>(3);
     const [includeSchools, setIncludeSchools] = useState<boolean>(false);
+    const [includeOpenDetachment, setIncludeOpenDetachment] = useState<boolean>(true);
+    const [includeClosedDetachments, setIncludeClosedDetachments] = useState<boolean>(true);
+    const [includePotentialDetachments, setIncludePotentialDetachments] = useState<boolean>(false);
 
-    console.log(catchmentRadius);
+    function handleDetachmentStateFilterChange(state: string, include: boolean)
+    {
+        switch(state)
+        {
+            case pinStates.closed:
+                setIncludeClosedDetachments(include);
+                break;
+            case pinStates.open:
+                setIncludeOpenDetachment(include);
+                break;
+            case pinStates.potential:
+                setIncludePotentialDetachments(include);
+                break;
+        }
+    }
+
+    function getDetachmentStateFilterValue(state: string): boolean
+    {
+        let include = false;
+
+        switch(state)
+        {
+            case pinStates.closed:
+                include = includeClosedDetachments;
+                break;
+            case pinStates.open:
+                include =  includeOpenDetachment;
+                break;
+            case pinStates.potential:
+                include = includePotentialDetachments;
+                break;
+        }
+
+        return include;
+    }
 
     const onMarkerClick = useCallback(
         (id: string | null, marker?: google.maps.marker.AdvancedMarkerElement) => {
@@ -87,12 +117,30 @@ export default function Home() {
     }
 
 
-    let markers = detachments;
+    const filteredDetachments = detachments.filter(detachment => {
+        if (includeClosedDetachments && detachment.state === pinStates.closed)
+        {
+            return detachment;
+        }
+
+        if (includeOpenDetachment && detachment.state === pinStates.open)
+        {
+            return detachment;
+        }
+
+        if (includePotentialDetachments && detachment.state === pinStates.potential)
+        {
+            return detachment;
+        }
+        return false
+    });
+
+    let markers = filteredDetachments;
 
     if(includeSchools)
     {
         markers = [
-            ...detachments,
+            ...filteredDetachments,
             ...schools,
         ];
     }
@@ -116,7 +164,29 @@ export default function Home() {
             </label>
 
 
-            <div id="filter-wrapper" className="grid gap-6 md:grid-cols-2">
+            <div id="detachment-state-filter-wrapper" className="grid gap-6 md:grid-cols-6 w-full">
+
+                <h3>Detachment status</h3>
+
+
+                {(Object.keys(pinStates) as Array<keyof typeof pinStates>).map((state, index) => (
+                    <div
+                        key={index}
+                        className="flex items-center ps-4 bg-neutral-primary-soft border border-default rounded-base shadow-2xs">
+                        <input id={state + "-detachments"} type="checkbox" value={state} name="bordered-checkbox"
+                               className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
+                               checked={getDetachmentStateFilterValue(state)}
+                               onChange={(e) => handleDetachmentStateFilterChange(state, e.target.checked)}
+                        />
+                        <label htmlFor={state + "-detachments"}
+                               className="select-none w-full py-4 ms-2 text-sm font-medium text-heading">{state}</label>
+                    </div>
+                ))}
+            </div>
+
+            <div id="schools-wrapper" className="grid gap-6 md:grid-cols-6 w-full">
+
+                <h3>Other filters</h3>
 
                 <div
                     className="flex items-center ps-4 bg-neutral-primary-soft border border-default rounded-base shadow-2xs">
@@ -128,7 +198,6 @@ export default function Home() {
                     <label htmlFor="show-schools"
                            className="select-none w-full py-4 ms-2 text-sm font-medium text-heading">Schools</label>
                 </div>
-
             </div>
 
             <APIProvider
