@@ -9,7 +9,7 @@ export const southDetachments = [
             lng: -3.047038566489743,
         },
         type: pinTypes.detachment,
-        color: pinColors.detachment
+        color: pinColors.openDetachment
     },
 
     {
@@ -19,7 +19,7 @@ export const southDetachments = [
             lng: -3.0174906294164723,
         },
         type: pinTypes.detachment,
-        color: pinColors.detachment
+        color: pinColors.openDetachment
     },
     {
         title: "Fleetwood detachment",
@@ -28,7 +28,7 @@ export const southDetachments = [
             lng: -3.011911566599637,
         },
         type: pinTypes.detachment,
-        color: pinColors.detachment
+        color: pinColors.openDetachment
     },
     {
         title: "Kirkham & Weeton detachment",
@@ -37,7 +37,7 @@ export const southDetachments = [
             lng: -2.933610695212161,
         },
         type: pinTypes.detachment,
-        color: pinColors.detachment
+        color: pinColors.openDetachment
     },
     {
         title: "Lytham St. Annes detachment",
@@ -46,7 +46,7 @@ export const southDetachments = [
             lng: -3.0078317833507913,
         },
         type: pinTypes.detachment,
-        color: pinColors.detachment
+        color: pinColors.openDetachment
     },
     {
         title: "Thornton detachment",
@@ -55,6 +55,6 @@ export const southDetachments = [
             lng: -3.005454971413963,
         },
         type: pinTypes.detachment,
-        color: pinColors.detachment
+        color: pinColors.openDetachment
     },
 ];

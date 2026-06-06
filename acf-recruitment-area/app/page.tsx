@@ -14,10 +14,9 @@ import {Circle} from "@/app/components/circle";
 import {pinTypes} from "@/app/components/pin-types";
 import {AdvancedMarkerWithRef} from "@/app/components/AdvancedMarkerWithRef";
 
+import {detachments} from "@/app/markers/detachments";
 import {lancasterSchools} from "@/app/markers/schools/lancaster";
 import {morecambeSchools} from "@/app/markers/schools/morecambe";
-import {northDetachments} from "@/app/markers/detachments/north";
-import {southDetachments} from "@/app/markers/detachments/south";
 import {carnforthSchools} from "@/app/markers/schools/carnforth";
 import {lsaSchools} from "@/app/markers/schools/lsa";
 import {thorntonSchools} from "@/app/markers/schools/thornton";
@@ -93,8 +92,7 @@ export default function Home() {
 
 
     const markers = [
-        ...northDetachments,
-        ...southDetachments,
+        ...detachments,
 
         ...carnforthSchools,
         ...lancasterSchools,
@@ -109,76 +107,91 @@ export default function Home() {
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start" style={{width: "100vh", height: "100vh"}}>
+        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start"
+              style={{width: "100vh", height: "100vh"}}>
 
-          <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-black">Detachment catchment area</h1>
-          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
-              Radius in meters:
-              <input
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  name={String(catchmentRadius)} value={catchmentRadius}
-                  onChange={e => setCatchmentRadius(Math.max(parseInt(e.target.value), 1))}
-              />
-          </label>
+            <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-black">Detachment
+                catchment area</h1>
+            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-black">
+                Radius in meters:
+                <input
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    name={String(catchmentRadius)} value={catchmentRadius}
+                    onChange={e => setCatchmentRadius(Math.max(parseInt(e.target.value), 1))}
+                />
+            </label>
 
-          <APIProvider
-              apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}
-          >
-              <Map
-                  defaultCenter={mapCentre}
-                  defaultZoom={10}
-                  mapId="DEMO_MAP_ID"
-                  onClick={onMapClick}
-              >
-                  {markers.map((marker, index) => (
-                      <div key={index}>
-                          <AdvancedMarkerWithRef
-                              onMarkerClick={(
-                                  marker: google.maps.marker.AdvancedMarkerElement
-                              ) => onMarkerClick(String(index), marker)}
-                              key={String(index)}
-                              position={marker.position}
-                          >
-                              <Pin
-                                  background={marker.color.background}
-                                  borderColor={marker.color.border}
-                                  glyphColor={marker.color.glyph}
-                              />
-                          </AdvancedMarkerWithRef>
 
-                          {marker.type === pinTypes.detachment && (
-                              <Circle
-                                  radius={catchmentRadius}
-                                  center={marker.position}
-                                  strokeColor={circleDefinition.strokeColor}
-                                  strokeOpacity={circleDefinition.strokeOpacity}
-                                  fillColor={circleDefinition.fillColor}
-                                  fillOpacity={circleDefinition.fillOpacity}
-                              >
+            <div id="filter-wrapper" className="grid gap-6 md:grid-cols-2">
 
-                              </Circle>
-                          )}
+                <div
+                    className="flex items-center ps-4 bg-neutral-primary-soft border border-default rounded-base shadow-xs">
+                    <input id="show-schools" type="checkbox" value="shools" name="bordered-checkbox"
+                           className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"/>
+                    <label htmlFor="show-schools"
+                           className="select-none w-full py-4 ms-2 text-sm font-medium text-heading">Schools</label>
+                </div>
 
-                      </div>
-                  ))}
+            </div>
 
-                  {infoWindowShown && selectedMarkerDetails && (
-                      <InfoWindow
-                          anchor={selectedMarker}
-                          onCloseClick={() => setInfoWindowShown(false)}
-                      >
-                          <div>
-                              <h1>{selectedMarkerDetails.title}</h1>
-                          </div>
-                      </InfoWindow>
-                  )}
-              </Map>
-          </APIProvider>
+            <APIProvider
+                apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!}
+            >
+                <Map
+                    defaultCenter={mapCentre}
+                    defaultZoom={10}
+                    mapId="DEMO_MAP_ID"
+                    onClick={onMapClick}
+                >
+                    {markers.map((marker, index) => (
+                        <div key={index}>
+                            <AdvancedMarkerWithRef
+                                onMarkerClick={(
+                                    marker: google.maps.marker.AdvancedMarkerElement
+                                ) => onMarkerClick(String(index), marker)}
+                                key={String(index)}
+                                position={marker.position}
+                            >
+                                <Pin
+                                    background={marker.color.background}
+                                    borderColor={marker.color.border}
+                                    glyphColor={marker.color.glyph}
+                                />
+                            </AdvancedMarkerWithRef>
 
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+                            {marker.type === pinTypes.detachment && (
+                                <Circle
+                                    radius={catchmentRadius}
+                                    center={marker.position}
+                                    strokeColor={circleDefinition.strokeColor}
+                                    strokeOpacity={circleDefinition.strokeOpacity}
+                                    fillColor={circleDefinition.fillColor}
+                                    fillOpacity={circleDefinition.fillOpacity}
+                                >
 
-      </footer>
+                                </Circle>
+                            )}
+
+                        </div>
+                    ))}
+
+                    {infoWindowShown && selectedMarkerDetails && (
+                        <InfoWindow
+                            anchor={selectedMarker}
+                            onCloseClick={() => setInfoWindowShown(false)}
+                        >
+                            <div>
+                                <h1>{selectedMarkerDetails.title}</h1>
+                            </div>
+                        </InfoWindow>
+                    )}
+                </Map>
+            </APIProvider>
+
+        </main>
+        <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+
+        </footer>
     </div>
   );
 }
