@@ -5,7 +5,6 @@ import boundaryMap_Blackpool from "@/app/data/boundary-maps/blackpool.json";
 import boundaryMap_Fylde from "@/app/data/boundary-maps/fylde.json";
 import boundaryMap_Lancaster from "@/app/data/boundary-maps/lancaster.json";
 import boundaryMap_Wyre from "@/app/data/boundary-maps/wyre.json";
-import {Feature} from "next/dist/build/webpack/plugins/telemetry-plugin/telemetry-plugin";
 
 export const Boundaries = (props: {includeBoundaries: boolean}) => {
     const map = useMap();
@@ -25,10 +24,10 @@ export const Boundaries = (props: {includeBoundaries: boolean}) => {
         }
 
         //Now we can add the new ones, otherwise it gets very dark
-        let blackpool = map.data.addGeoJson(boundaryMap_Blackpool);
-        let fylde = map.data.addGeoJson(boundaryMap_Fylde);
-        let lancaster = map.data.addGeoJson(boundaryMap_Lancaster);
-        let wyre = map.data.addGeoJson(boundaryMap_Wyre);
+        map.data.addGeoJson(boundaryMap_Blackpool);
+        map.data.addGeoJson(boundaryMap_Fylde);
+        map.data.addGeoJson(boundaryMap_Lancaster);
+        map.data.addGeoJson(boundaryMap_Wyre);
 
         map.data.setStyle((feature) => {
             return {

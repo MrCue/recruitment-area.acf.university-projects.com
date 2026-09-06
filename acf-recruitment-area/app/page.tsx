@@ -1,6 +1,6 @@
 'use client';
 
-import {APIProvider, InfoWindow, Map, MapEvent, Pin, useMap,} from '@vis.gl/react-google-maps';
+import {APIProvider, InfoWindow, Map, Pin} from '@vis.gl/react-google-maps';
 import {useCallback, useState,} from "react";
 import {Circle} from "@/app/components/circle";
 import {pinTypes} from "@/app/components/pin-types";
