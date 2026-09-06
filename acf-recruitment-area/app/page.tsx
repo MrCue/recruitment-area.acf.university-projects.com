@@ -1,6 +1,6 @@
 'use client';
 
-import {APIProvider, InfoWindow, Map, Pin,} from '@vis.gl/react-google-maps';
+import {APIProvider, InfoWindow, Map, MapEvent, Pin, useMap,} from '@vis.gl/react-google-maps';
 import {useCallback, useState,} from "react";
 import {Circle} from "@/app/components/circle";
 import {pinTypes} from "@/app/components/pin-types";
@@ -10,6 +10,7 @@ import detachments from "@/app/data/detachments.json";
 import schools from "@/app/data/schools.json";
 import {pinStates} from "@/app/components/pin-states";
 import {pinColors} from "@/app/components/pin-colors";
+import {Boundaries} from "@/app/components/Boundaries";
 
 export default function Home() {
 
@@ -22,6 +23,7 @@ export default function Home() {
     const [includeOpenDetachment, setIncludeOpenDetachment] = useState<boolean>(true);
     const [includeClosedDetachments, setIncludeClosedDetachments] = useState<boolean>(true);
     const [includePotentialDetachments, setIncludePotentialDetachments] = useState<boolean>(false);
+    const [includeBoundaries, setIncludeBoundaries] = useState<boolean>(false);
 
     function handleDetachmentStateFilterChange(state: string, include: boolean) {
         switch (state) {
@@ -228,6 +230,18 @@ export default function Home() {
                         <label htmlFor="show-schools"
                                className="select-none w-full py-4 ms-2 text-sm font-medium text-heading">Schools</label>
                     </div>
+
+                    <div
+                        className="flex items-center ps-4 bg-neutral-primary-soft border border-default rounded-base shadow-2xs">
+                        <input id="show-boundaries" type="checkbox" value="boundaries" name="bordered-checkbox"
+                               className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
+                               checked={includeBoundaries}
+                               onChange={(e) => setIncludeBoundaries(e.target.checked)}
+                        />
+                        <label htmlFor="show-boundaries"
+                               className="select-none w-full py-4 ms-2 text-sm font-medium text-heading">Boundaries</label>
+                    </div>
+
                 </div>
 
                 <APIProvider
@@ -239,6 +253,7 @@ export default function Home() {
                         mapId="DEMO_MAP_ID"
                         onClick={onMapClick}
                     >
+
                         {markers.map((marker, index) => (
                             <div key={index}>
                                 <AdvancedMarkerWithRef
@@ -282,6 +297,8 @@ export default function Home() {
                             </InfoWindow>
                         )}
                     </Map>
+
+                    <Boundaries includeBoundaries={includeBoundaries} />
                 </APIProvider>
 
             </main>
