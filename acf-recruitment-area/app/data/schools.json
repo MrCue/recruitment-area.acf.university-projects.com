@@ -1,0 +1,437 @@
+[
+  {
+    "id": 12,
+    "name": "AKS Lytham",
+    "localAuthority": {
+      "id": 2,
+      "name": "Fylde"
+    },
+    "address": "Clifton Drive South, Lytham St Annes, FY8 1DT",
+    "geoLocation": {
+      "lat": 53.7385,
+      "lng": -3.011
+    },
+    "type": "Private",
+    "pupils": 785
+  },
+  {
+    "id": 1,
+    "name": "Armfield Academy",
+    "localAuthority": {
+      "id": 1,
+      "name": "Blackpool"
+    },
+    "address": "488 Lytham Road, Blackpool, FY4 1TL",
+    "geoLocation": {
+      "lat": 53.788,
+      "lng": -3.0478
+    },
+    "type": "State",
+    "pupils": 1221
+  },
+  {
+    "id": 22,
+    "name": "Baines School",
+    "localAuthority": {
+      "id": 4,
+      "name": "Wyre"
+    },
+    "address": "Highcross Road, Poulton-le-Fylde, FY6 8BE",
+    "geoLocation": {
+      "lat": 53.849,
+      "lng": -2.986
+    },
+    "type": "State",
+    "pupils": 726
+  },
+  {
+    "id": 14,
+    "name": "Bay Leadership Academy",
+    "localAuthority": {
+      "id": 3,
+      "name": "Lancaster"
+    },
+    "address": "Osborne Road, Morecambe, LA3 1AB",
+    "geoLocation": {
+      "lat": 54.0715,
+      "lng": -2.861
+    },
+    "type": "State",
+    "pupils": 724
+  },
+  {
+    "id": 2,
+    "name": "Blackpool Aspire Academy",
+    "localAuthority": {
+      "id": 1,
+      "name": "Blackpool"
+    },
+    "address": "Blackpool Old Road, Blackpool, FY3 7LS",
+    "geoLocation": {
+      "lat": 53.8177,
+      "lng": -3.0275
+    },
+    "type": "State",
+    "pupils": 799
+  },
+  {
+    "id": 23,
+    "name": "Cardinal Allen Catholic High School",
+    "localAuthority": {
+      "id": 4,
+      "name": "Wyre"
+    },
+    "address": "Melbourne Avenue, Fleetwood, FY7 8AY",
+    "geoLocation": {
+      "lat": 53.922,
+      "lng": -3.012
+    },
+    "type": "State",
+    "pupils": 769
+  },
+  {
+    "id": 15,
+    "name": "Carnforth High School",
+    "localAuthority": {
+      "id": 3,
+      "name": "Lancaster"
+    },
+    "address": "Kellet Road, Carnforth, LA5 9LS",
+    "geoLocation": {
+      "lat": 54.129,
+      "lng": -2.771
+    },
+    "type": "State",
+    "pupils": 657
+  },
+  {
+    "id": 9,
+    "name": "Carr Hill High School",
+    "localAuthority": {
+      "id": 2,
+      "name": "Fylde"
+    },
+    "address": "Royal Avenue, Kirkham, PR4 2PZ",
+    "geoLocation": {
+      "lat": 53.783,
+      "lng": -2.871
+    },
+    "type": "State",
+    "pupils": 790
+  },
+  {
+    "id": 24,
+    "name": "Fleetwood High School",
+    "localAuthority": {
+      "id": 4,
+      "name": "Wyre"
+    },
+    "address": "Broadway, Fleetwood, FY7 8HE",
+    "geoLocation": {
+      "lat": 53.916,
+      "lng": -3.016
+    },
+    "type": "State",
+    "pupils": 1025
+  },
+  {
+    "id": 25,
+    "name": "Garstang Community Academy",
+    "localAuthority": {
+      "id": 4,
+      "name": "Wyre"
+    },
+    "address": "Bowgreave, Garstang, PR3 1YE",
+    "geoLocation": {
+      "lat": 53.901,
+      "lng": -2.771
+    },
+    "type": "State",
+    "pupils": 750
+  },
+  {
+    "id": 3,
+    "name": "Highfield Leadership Academy",
+    "localAuthority": {
+      "id": 1,
+      "name": "Blackpool"
+    },
+    "address": "Highfield Road, Blackpool, FY4 3JZ",
+    "geoLocation": {
+      "lat": 53.7936,
+      "lng": -3.0276
+    },
+    "type": "State",
+    "pupils": 751
+  },
+  {
+    "id": 26,
+    "name": "Hodgson Academy",
+    "localAuthority": {
+      "id": 4,
+      "name": "Wyre"
+    },
+    "address": "Moorland Road, Poulton-le-Fylde, FY6 7EU",
+    "geoLocation": {
+      "lat": 53.8485,
+      "lng": -2.995
+    },
+    "type": "State",
+    "pupils": 1121
+  },
+  {
+    "id": 13,
+    "name": "Kirkham Grammar School",
+    "localAuthority": {
+      "id": 2,
+      "name": "Fylde"
+    },
+    "address": "Ribby Road, Kirkham, PR4 2BH",
+    "geoLocation": {
+      "lat": 53.7814,
+      "lng": -2.8885
+    },
+    "type": "Private",
+    "pupils": 670
+  },
+  {
+    "id": 16,
+    "name": "Lancaster Girls' Grammar School",
+    "localAuthority": {
+      "id": 3,
+      "name": "Lancaster"
+    },
+    "address": "Regent Street, Lancaster, LA1 1SF",
+    "geoLocation": {
+      "lat": 54.0505,
+      "lng": -2.797
+    },
+    "type": "State",
+    "pupils": 1038
+  },
+  {
+    "id": 17,
+    "name": "Lancaster High School",
+    "localAuthority": {
+      "id": 3,
+      "name": "Lancaster"
+    },
+    "address": "Crag Road, Lancaster, LA1 3LS",
+    "geoLocation": {
+      "lat": 54.062,
+      "lng": -2.806
+    },
+    "type": "State",
+    "pupils": 567
+  },
+  {
+    "id": 18,
+    "name": "Lancaster Royal Grammar School",
+    "localAuthority": {
+      "id": 3,
+      "name": "Lancaster"
+    },
+    "address": "East Road, Lancaster, LA1 3EF",
+    "geoLocation": {
+      "lat": 54.048,
+      "lng": -2.7855
+    },
+    "type": "State",
+    "pupils": 1294
+  },
+  {
+    "id": 10,
+    "name": "Lytham St Annes High School",
+    "localAuthority": {
+      "id": 2,
+      "name": "Fylde"
+    },
+    "address": "Albany Road, Lytham St Annes, FY8 4GW",
+    "geoLocation": {
+      "lat": 53.74,
+      "lng": -3.016
+    },
+    "type": "State",
+    "pupils": 1588
+  },
+  {
+    "id": 27,
+    "name": "Millfield Science \u0026 Performing Arts College",
+    "localAuthority": {
+      "id": 4,
+      "name": "Wyre"
+    },
+    "address": "Belvedere Road, Thornton-Cleveleys, FY5 5DG",
+    "geoLocation": {
+      "lat": 53.878,
+      "lng": -3.024
+    },
+    "type": "State",
+    "pupils": 873
+  },
+  {
+    "id": 4,
+    "name": "Montgomery Academy",
+    "localAuthority": {
+      "id": 1,
+      "name": "Blackpool"
+    },
+    "address": "All Hallows Road, Bispham, FY2 0AZ",
+    "geoLocation": {
+      "lat": 53.847,
+      "lng": -3.0285
+    },
+    "type": "State",
+    "pupils": 1192
+  },
+  {
+    "id": 19,
+    "name": "Morecambe Bay Academy",
+    "localAuthority": {
+      "id": 3,
+      "name": "Lancaster"
+    },
+    "address": "Dallam Avenue, Morecambe, LA4 5BG",
+    "geoLocation": {
+      "lat": 54.066,
+      "lng": -2.856
+    },
+    "type": "State",
+    "pupils": 1045
+  },
+  {
+    "id": 20,
+    "name": "Our Lady's Catholic College",
+    "localAuthority": {
+      "id": 3,
+      "name": "Lancaster"
+    },
+    "address": "Morecambe Road, Lancaster, LA1 2RX",
+    "geoLocation": {
+      "lat": 54.0495,
+      "lng": -2.812
+    },
+    "type": "State",
+    "pupils": 981
+  },
+  {
+    "id": 21,
+    "name": "Ripley St Thomas Church of England Academy",
+    "localAuthority": {
+      "id": 3,
+      "name": "Lancaster"
+    },
+    "address": "Ashton Road, Lancaster, LA1 4RS",
+    "geoLocation": {
+      "lat": 54.0395,
+      "lng": -2.8215
+    },
+    "type": "State",
+    "pupils": 1755
+  },
+  {
+    "id": 29,
+    "name": "Rossall School",
+    "localAuthority": {
+      "id": 4,
+      "name": "Wyre"
+    },
+    "address": "Broadway, Fleetwood, FY7 8JW",
+    "geoLocation": {
+      "lat": 53.8995,
+      "lng": -3.022
+    },
+    "type": "Private",
+    "pupils": 810
+  },
+  {
+    "id": 28,
+    "name": "Saint Aidan's Church of England High School",
+    "localAuthority": {
+      "id": 4,
+      "name": "Wyre"
+    },
+    "address": "Cartgate, Preesall, FY6 0NP",
+    "geoLocation": {
+      "lat": 53.918,
+      "lng": -2.966
+    },
+    "type": "State",
+    "pupils": 820
+  },
+  {
+    "id": 11,
+    "name": "Saint Bede's Catholic High School",
+    "localAuthority": {
+      "id": 2,
+      "name": "Fylde"
+    },
+    "address": "Talbot Road, Lytham St Annes, FY8 4JL",
+    "geoLocation": {
+      "lat": 53.7485,
+      "lng": -3.0045
+    },
+    "type": "State",
+    "pupils": 831
+  },
+  {
+    "id": 5,
+    "name": "South Shore Academy",
+    "localAuthority": {
+      "id": 1,
+      "name": "Blackpool"
+    },
+    "address": "St Anne's Road, Blackpool, FY4 2AR",
+    "geoLocation": {
+      "lat": 53.7845,
+      "lng": -3.049
+    },
+    "type": "State",
+    "pupils": 550
+  },
+  {
+    "id": 6,
+    "name": "St George's School, A Church of England Academy",
+    "localAuthority": {
+      "id": 1,
+      "name": "Blackpool"
+    },
+    "address": "Cherry Tree Road, Marton, Blackpool, FY4 4PH",
+    "geoLocation": {
+      "lat": 53.7838,
+      "lng": -3.0138
+    },
+    "type": "State",
+    "pupils": 609
+  },
+  {
+    "id": 7,
+    "name": "St Mary's Catholic Academy",
+    "localAuthority": {
+      "id": 1,
+      "name": "Blackpool"
+    },
+    "address": "St Walburga's Road, Blackpool, FY3 7EQ",
+    "geoLocation": {
+      "lat": 53.8211,
+      "lng": -3.0351
+    },
+    "type": "State",
+    "pupils": 1188
+  },
+  {
+    "id": 8,
+    "name": "Unity Academy Blackpool",
+    "localAuthority": {
+      "id": 1,
+      "name": "Blackpool"
+    },
+    "address": "Warbreck Hill Road, Blackpool, FY2 0TS",
+    "geoLocation": {
+      "lat": 53.8404,
+      "lng": -3.0283
+    },
+    "type": "State",
+    "pupils": 877
+  }
+]
