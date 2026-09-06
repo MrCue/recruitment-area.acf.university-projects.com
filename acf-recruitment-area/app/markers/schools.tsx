@@ -10,7 +10,8 @@ export const schools = [
             lng: -3.0661550809888176,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 1221
     },
     {
         title: "Blackpool Aspire Academy",
@@ -19,7 +20,8 @@ export const schools = [
             lng: -3.010887773821911,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 799
     },
     {
         title: "Highfield Leadership Academy",
@@ -28,7 +30,8 @@ export const schools = [
             lng: -3.0205151033055997,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 751
     },
     {
         title: "Montgomery Academy",
@@ -37,7 +40,8 @@ export const schools = [
             lng: -3.0397268841186396,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 1192
     },
     {
         title: "South Shore Academy",
@@ -46,7 +50,28 @@ export const schools = [
             lng: -3.0680972076987416,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 550
+    },
+    {
+        title: "St George's School, A Church of England Academy",
+        position: {
+            lat: 53.7838,
+            lng: -3.0138,
+        },
+        type: pinTypes.school,
+        color: pinColors.school,
+        pupilCount: 609
+    },
+    {
+        title: "St Mary's Catholic Academy",
+        position: {
+            lat: 53.8211,
+            lng: -3.0351,
+        },
+        type: pinTypes.school,
+        color: pinColors.school,
+        pupilCount: 1188
     },
     {
         title: "Unity Academy Blackpool",
@@ -55,7 +80,8 @@ export const schools = [
             lng: -3.0568930212000263,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 877
     },
 
     //Carnforth
@@ -66,7 +92,8 @@ export const schools = [
             lng: -2.7151197936366556,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 657
     },
 
     //Fleetwood
@@ -77,7 +104,8 @@ export const schools = [
             lng: -3.059639603133048,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 769
     },
     {
         title: "Fleetwood High School",
@@ -86,7 +114,28 @@ export const schools = [
             lng: -3.036293656702363,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 1025
+    },
+    {
+        title: "Garstang Community Academy",
+        position: {
+            lat: 53.901,
+            lng: -2.771,
+        },
+        type: pinTypes.school,
+        color: pinColors.school,
+        pupilCount: 750
+    },
+    {
+        title: "Rossall School",
+        position: {
+            lat: 53.8995,
+            lng: -3.022,
+        },
+        type: pinTypes.school,
+        color: pinColors.school,
+        pupilCount: 810
     },
     {
         title: "St Aidan's Church of England High School",
@@ -95,7 +144,8 @@ export const schools = [
             lng: -2.9250570884149796,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 820
     },
 
     //Kirkham
@@ -106,7 +156,8 @@ export const schools = [
             lng: -2.820686974960151,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 790
     },
     {
         title: "Kirkham Grammar School",
@@ -115,7 +166,8 @@ export const schools = [
             lng: -2.903084432950805,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 670
     },
 
     //Lancaster
@@ -126,7 +178,18 @@ export const schools = [
             lng: -2.800573368873319,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 1038
+    },
+    {
+        title: "Lancaster High School",
+        position: {
+            lat: 54.062,
+            lng: -2.806,
+        },
+        type: pinTypes.school,
+        color: pinColors.school,
+        pupilCount: 567
     },
     {
         title: "Lancaster Royal Grammar School",
@@ -135,7 +198,8 @@ export const schools = [
             lng: -2.785036355193926,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 1294
     },
     {
         title: "Our Lady's Catholic College",
@@ -144,7 +208,18 @@ export const schools = [
             lng: -2.7954286779849107,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 981
+    },
+    {
+        title: "Ripley St Thomas Church of England Academy",
+        position: {
+            lat: 54.0395,
+            lng: -2.8215,
+        },
+        type: pinTypes.school,
+        color: pinColors.school,
+        pupilCount: 1755
     },
 
     //Lytham St. Annes
@@ -155,7 +230,8 @@ export const schools = [
             lng: -2.991868734334218,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 785
     },
     {
         title: "Lytham St. Annes High School",
@@ -164,7 +240,8 @@ export const schools = [
             lng: -2.9937216367405246,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 1588
     },
     {
         title: "St Annes College Grammar School",
@@ -173,7 +250,8 @@ export const schools = [
             lng: -3.027367265420042,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 0
     },
     {
         title: "Saint Bede’s Catholic High School",
@@ -182,7 +260,8 @@ export const schools = [
             lng: -2.9326101887307896,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 831
     },
 
     //Morecambe
@@ -193,7 +272,8 @@ export const schools = [
             lng: -2.8460687823750006,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 1045
     },
     {
         title: "Bay Leadership Academy",
@@ -202,7 +282,8 @@ export const schools = [
             lng: -2.8771394904923095,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 724
     },
     {
         title: "Morecambe Road School",
@@ -211,7 +292,8 @@ export const schools = [
             lng: -2.829589290776869,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 0
     },
 
     //Thornton
@@ -222,7 +304,8 @@ export const schools = [
             lng: -2.966621086844736,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 726
     },
     {
         title: "Hodgson Academy",
@@ -231,7 +314,8 @@ export const schools = [
             lng: -2.9793020815921603,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 1121
     },
     {
         title: "Millfield Science & Performing Arts College",
@@ -240,6 +324,7 @@ export const schools = [
             lng: -2.9703756903098393,
         },
         type: pinTypes.school,
-        color: pinColors.school
+        color: pinColors.school,
+        pupilCount: 873
     },
 ];
