@@ -1,19 +1,19 @@
 import {Pin} from '@vis.gl/react-google-maps';
 import {AdvancedMarkerWithRef} from "@/app/components/AdvancedMarkerWithRef";
 import {Circle} from "@/app/components/circle";
-import {MarkerDetails} from "@/app/types/types";
+import {DetachmentMarkerDetails} from "@/app/types/types";
 import {pinColors} from "@/app/components/pin-colors";
 import {pinStates} from "@/app/components/pin-states";
 
 export default function DetachmentMarkers(
     props: {
-        detachments: MarkerDetails[],
+        detachments: DetachmentMarkerDetails[],
         catchmentRadius: number,
-        onMarkerClick: any,
+        onMarkerClick: (detachment: DetachmentMarkerDetails, marker: google.maps.marker.AdvancedMarkerElement) => void,
     }
 ) {
 
-    let markers = props.detachments;
+    const markers = props.detachments;
 
     return (
         <>
@@ -26,9 +26,9 @@ export default function DetachmentMarkers(
 
 function DetachmentMarker(
     props: {
-        detachment: MarkerDetails,
+        detachment: DetachmentMarkerDetails,
         catchmentRadius: number,
-        onMarkerClick: any
+        onMarkerClick: (detachment: DetachmentMarkerDetails, marker: google.maps.marker.AdvancedMarkerElement) => void,
     }
 ) {
     const detachment = props.detachment;
@@ -41,7 +41,7 @@ function DetachmentMarker(
         fillOpacity: 0.15,
     }
 
-    const markerStyleFromTypeAndStatus = (type: string, status: string): {
+    const markerStyleFromTypeAndStatus = (status: string): {
         background?: string;
         border?: string;
         glyph?: string;
@@ -58,7 +58,7 @@ function DetachmentMarker(
         return {};
     }
 
-    const markerStyle = markerStyleFromTypeAndStatus(detachment.type, detachment.status);
+    const markerStyle = markerStyleFromTypeAndStatus(detachment.status);
 
     return (
 

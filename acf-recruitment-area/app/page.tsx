@@ -2,27 +2,32 @@
 
 import {APIProvider, InfoWindow, Map, Pin} from '@vis.gl/react-google-maps';
 import {useCallback, useState,} from "react";
-import {pinTypes} from "@/app/components/pin-types";
-import detachments from "@/app/data/detachments.json";
-import schools from "@/app/data/schools.json";
 import {pinStates} from "@/app/components/pin-states";
 import {Boundaries} from "@/app/components/Boundaries";
 import DetachmentMarkers from "@/app/components/DetachmentMarkers";
-import {MarkerDetails} from "@/app/types/types";
+import {DetachmentMarkerDetails, InfoDetails, SchoolMarkerDetails} from "@/app/types/types";
 import SchoolMarkers from "@/app/components/SchoolMarkers";
+
+import detachmentsData from "@/app/data/detachments.json";
+import schoolsData from "@/app/data/schools.json";
 
 export default function Home() {
 
     const [selectedId, setSelectedId] = useState<string | null>(null);
     const [selectedMarker, setSelectedMarker] = useState<google.maps.marker.AdvancedMarkerElement | null>(null);
     const [infoWindowShown, setInfoWindowShown] = useState(false);
-    const [selectedMarkerDetails, setSelectedMarkerDetails] = useState<MarkerDetails | null>(null);
+    const [selectedMarkerDetails, setSelectedMarkerDetails] = useState<InfoDetails | null>(null);
     const [catchmentRadius, setCatchmentRadius] = useState<number>(3);
     const [includeSchools, setIncludeSchools] = useState<boolean>(false);
     const [includeOpenDetachment, setIncludeOpenDetachment] = useState<boolean>(true);
     const [includeClosedDetachments, setIncludeClosedDetachments] = useState<boolean>(false);
     const [includePotentialDetachments, setIncludePotentialDetachments] = useState<boolean>(false);
     const [includeBoundaries, setIncludeBoundaries] = useState<boolean>(false);
+
+
+    const detachments = detachmentsData as DetachmentMarkerDetails[];
+    const schools = schoolsData as SchoolMarkerDetails[];
+
 
     function handleDetachmentStateFilterChange(state: string, include: boolean) {
         switch (state) {
@@ -58,10 +63,11 @@ export default function Home() {
 
     const onMarkerClick = useCallback(
         (
-            info: MarkerDetails | null,
+            info: InfoDetails | null,
             marker?: google.maps.marker.AdvancedMarkerElement
         ) => {
-            let id= info?.name || null
+            const id= info?.name || null;
+
             setSelectedId(id);
 
             if (marker) {
@@ -93,21 +99,8 @@ export default function Home() {
         lng: -3.0363965259921217,
     }
 
-    const detachmentsList: MarkerDetails[] = detachments.map(detachment => {
-        detachment.type = pinTypes.detachment;
 
-        return detachment;
-    });
-
-    const schoolsList: MarkerDetails[] = schools.map(school => {
-        school.status = pinStates.open;
-        school.type = pinTypes.school;
-
-        return school;
-    });
-
-
-    const filteredDetachments = detachmentsList.filter(detachment => {
+    const filteredDetachments = detachments.filter(detachment => {
         if (includeClosedDetachments && detachment.status === pinStates.closed) {
             return detachment;
         }
@@ -201,7 +194,7 @@ export default function Home() {
                     >
 
                         <DetachmentMarkers detachments={filteredDetachments} catchmentRadius={catchmentRadius} onMarkerClick={onMarkerClick} />
-                        <SchoolMarkers schools={includeSchools ? schoolsList : []} onMarkerClick={onMarkerClick} />
+                        <SchoolMarkers schools={includeSchools ? schools : []} onMarkerClick={onMarkerClick} />
 
                         {infoWindowShown && selectedMarkerDetails && (
                             <InfoWindow

@@ -1,4 +1,3 @@
-import {pinTypes} from "@/app/components/pin-types";
 import {pinStates} from "@/app/components/pin-states";
 
 export type GeoLocation = {
@@ -11,11 +10,21 @@ export type LocalAuthority = {
     name: string,
 }
 
-export type MarkerDetails = {
+export type DetachmentMarkerDetails = InfoDetails & {
     id: number,
     name: string,
     localAuthority: LocalAuthority,
     geoLocation: GeoLocation,
     status: pinStates,
-    type: pinTypes,
+}
+
+export type SchoolMarkerDetails = InfoDetails & {
+    id: number,
+    name: string,
+    localAuthority: LocalAuthority,
+    geoLocation: GeoLocation,
+}
+
+export interface InfoDetails {
+    name: string,
 }

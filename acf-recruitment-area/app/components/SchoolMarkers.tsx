@@ -1,16 +1,16 @@
 import {Pin} from '@vis.gl/react-google-maps';
-import {MarkerDetails} from "@/app/types/types";
+import {SchoolMarkerDetails} from "@/app/types/types";
 import {pinColors} from "@/app/components/pin-colors";
 import {AdvancedMarkerWithRef} from "@/app/components/AdvancedMarkerWithRef";
 
 export default function SchoolMarkers(
     props: {
-        schools: MarkerDetails[],
-        onMarkerClick: any,
+        schools: SchoolMarkerDetails[],
+        onMarkerClick: (school: SchoolMarkerDetails, marker: google.maps.marker.AdvancedMarkerElement) => void,
     }
 ) {
 
-    let markers = props.schools;
+    const markers = props.schools;
 
     return (
         <>
@@ -23,8 +23,8 @@ export default function SchoolMarkers(
 
 function SchoolMarker(
     props: {
-        school: MarkerDetails,
-        onMarkerClick: any
+        school: SchoolMarkerDetails,
+        onMarkerClick: (school: SchoolMarkerDetails, marker: google.maps.marker.AdvancedMarkerElement) => void,
     }
 ) {
 
