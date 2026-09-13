@@ -2,15 +2,14 @@
 
 import {APIProvider, InfoWindow, Map, Pin} from '@vis.gl/react-google-maps';
 import {useCallback, useState,} from "react";
-import {Circle} from "@/app/components/circle";
 import {pinTypes} from "@/app/components/pin-types";
-import {AdvancedMarkerWithRef} from "@/app/components/AdvancedMarkerWithRef";
-
 import detachments from "@/app/data/detachments.json";
 import schools from "@/app/data/schools.json";
 import {pinStates} from "@/app/components/pin-states";
-import {pinColors} from "@/app/components/pin-colors";
 import {Boundaries} from "@/app/components/Boundaries";
+import DetachmentMarkers from "@/app/components/DetachmentMarkers";
+import {MarkerDetails} from "@/app/types/types";
+import SchoolMarkers from "@/app/components/SchoolMarkers";
 
 export default function Home() {
 
@@ -21,7 +20,7 @@ export default function Home() {
     const [catchmentRadius, setCatchmentRadius] = useState<number>(3);
     const [includeSchools, setIncludeSchools] = useState<boolean>(false);
     const [includeOpenDetachment, setIncludeOpenDetachment] = useState<boolean>(true);
-    const [includeClosedDetachments, setIncludeClosedDetachments] = useState<boolean>(true);
+    const [includeClosedDetachments, setIncludeClosedDetachments] = useState<boolean>(false);
     const [includePotentialDetachments, setIncludePotentialDetachments] = useState<boolean>(false);
     const [includeBoundaries, setIncludeBoundaries] = useState<boolean>(false);
 
@@ -58,7 +57,11 @@ export default function Home() {
     }
 
     const onMarkerClick = useCallback(
-        (id: string | null, marker?: google.maps.marker.AdvancedMarkerElement) => {
+        (
+            info: MarkerDetails | null,
+            marker?: google.maps.marker.AdvancedMarkerElement
+        ) => {
+            let id= info?.name || null
             setSelectedId(id);
 
             if (marker) {
@@ -66,7 +69,7 @@ export default function Home() {
             }
 
             if (selectedId) {
-                setSelectedMarkerDetails(markers[parseInt(id)]);
+                setSelectedMarkerDetails(info);
             }
 
             if (id !== selectedId) {
@@ -88,33 +91,6 @@ export default function Home() {
     const mapCentre = {
         lat: 53.816759659667646,
         lng: -3.0363965259921217,
-    }
-
-    type GeoLocation = {
-        lat: number,
-        lng: number,
-    }
-
-    type LocalAuthority = {
-        id: number,
-        name: string,
-    }
-
-    type MarkerDetails = {
-        id: number,
-        name: string,
-        localAuthority: LocalAuthority,
-        geoLocation: GeoLocation,
-        status: pinStates,
-        type: pinTypes,
-    }
-
-    const circleDefinition = {
-        strokeColor: "#040303",
-        strokeOpacity: 0.8,
-        strokeWeight: 2,
-        fillColor: "#4bc103",
-        fillOpacity: 0.15,
     }
 
     const detachmentsList: MarkerDetails[] = detachments.map(detachment => {
@@ -145,36 +121,6 @@ export default function Home() {
         }
         return false
     });
-
-    let markers = filteredDetachments;
-
-    if (includeSchools) {
-        markers = [
-            ...filteredDetachments,
-            ...schoolsList,
-        ];
-    }
-
-    const markerStyleFromTypeAndStatus = (type: string, status: string): {
-        background?: string;
-        border?: string;
-        glyph?: string;
-    } => {
-
-        if (type === pinTypes.school) {
-            return pinColors.school;
-        }
-
-        switch (status) {
-            case pinStates.open:
-                return pinColors.openDetachment;
-            case pinStates.potential:
-                return pinColors.potentialDetachment;
-            case pinStates.closed:
-                return pinColors.closedDetachment;
-        }
-        return {};
-    }
 
     return (
         <div
@@ -254,37 +200,8 @@ export default function Home() {
                         onClick={onMapClick}
                     >
 
-                        {markers.map((marker, index) => (
-                            <div key={index}>
-                                <AdvancedMarkerWithRef
-                                    onMarkerClick={(
-                                        marker: google.maps.marker.AdvancedMarkerElement
-                                    ) => onMarkerClick(String(index), marker)}
-                                    key={String(index)}
-                                    position={marker.geoLocation}
-                                >
-                                    <Pin
-                                        background={markerStyleFromTypeAndStatus(marker.type, marker.status).background}
-                                        borderColor={markerStyleFromTypeAndStatus(marker.type, marker.status).border}
-                                        glyphColor={markerStyleFromTypeAndStatus(marker.type, marker.status).glyph}
-                                    />
-                                </AdvancedMarkerWithRef>
-
-                                {marker.type === pinTypes.detachment && (
-                                    <Circle
-                                        radius={catchmentRadius * 1609.34}
-                                        center={marker.geoLocation}
-                                        strokeColor={circleDefinition.strokeColor}
-                                        strokeOpacity={circleDefinition.strokeOpacity}
-                                        fillColor={circleDefinition.fillColor}
-                                        fillOpacity={circleDefinition.fillOpacity}
-                                    >
-
-                                    </Circle>
-                                )}
-
-                            </div>
-                        ))}
+                        <DetachmentMarkers detachments={filteredDetachments} catchmentRadius={catchmentRadius} onMarkerClick={onMarkerClick} />
+                        <SchoolMarkers schools={includeSchools ? schoolsList : []} onMarkerClick={onMarkerClick} />
 
                         {infoWindowShown && selectedMarkerDetails && (
                             <InfoWindow
