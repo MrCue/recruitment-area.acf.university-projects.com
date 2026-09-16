@@ -18,6 +18,13 @@ export type DetachmentMarkerDetails = InfoDetails & {
     status: pinStates,
 }
 
+export type OtherYouthOrganisationMarkerDetails = InfoDetails & {
+    id: number,
+    name: string,
+    organisation: string,
+    geoLocation: GeoLocation,
+}
+
 export type SchoolMarkerDetails = InfoDetails & {
     id: number,
     name: string,

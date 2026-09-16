@@ -1,0 +1,92 @@
+[
+  {
+    "id": 5,
+    "organisation": "RAF Air Cadets",
+    "name": "1301 (Fleetwood) Squadron",
+    "geoLocation": {
+      "lat": 53.9189,
+      "lng": -3.0185
+    }
+  },
+  {
+    "id": 1,
+    "organisation": "RAF Air Cadets",
+    "name": "177 (Blackpool Airport) Squadron",
+    "geoLocation": {
+      "lat": 53.7742,
+      "lng": -3.0335
+    }
+  },
+  {
+    "id": 2,
+    "organisation": "RAF Air Cadets",
+    "name": "2454 (Blackpool) Squadron",
+    "geoLocation": {
+      "lat": 53.8471,
+      "lng": -3.0378
+    }
+  },
+  {
+    "id": 4,
+    "organisation": "RAF Air Cadets",
+    "name": "2459 (Poulton-le-Fylde) Squadron",
+    "geoLocation": {
+      "lat": 53.8465,
+      "lng": -2.9902
+    }
+  },
+  {
+    "id": 3,
+    "organisation": "RAF Air Cadets",
+    "name": "2486 (Lytham St Annes) Squadron",
+    "geoLocation": {
+      "lat": 53.7431,
+      "lng": -2.9928
+    }
+  },
+  {
+    "id": 6,
+    "organisation": "RAF Air Cadets",
+    "name": "345 (City of Lancaster) Squadron",
+    "geoLocation": {
+      "lat": 54.0456,
+      "lng": -2.8052
+    }
+  },
+  {
+    "id": 7,
+    "organisation": "Sea Cadets",
+    "name": "Blackpool Unit (TS Panther)",
+    "geoLocation": {
+      "lat": 53.8398,
+      "lng": -3.0355
+    }
+  },
+  {
+    "id": 9,
+    "organisation": "Sea Cadets",
+    "name": "Fleetwood Unit (TS Conqueror)",
+    "geoLocation": {
+      "lat": 53.9262,
+      "lng": -3.0232
+    }
+  },
+  {
+    "id": 8,
+    "organisation": "Sea Cadets",
+    "name": "Lytham St Annes Unit (TS Speedwell)",
+    "geoLocation": {
+      "lat": 53.7381,
+      "lng": -2.9715
+    }
+  },
+  {
+    "id": 10,
+    "organisation": "Sea Cadets",
+    "name": "Morecambe \u0026 Heysham Unit (TS Red Rose)",
+    "geoLocation": {
+      "lat": 54.062,
+      "lng": -2.8462
+    }
+  }
+]

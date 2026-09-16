@@ -1,15 +1,28 @@
 'use client';
 
-import {APIProvider, InfoWindow, Map, Pin} from '@vis.gl/react-google-maps';
-import {useCallback, useState,} from "react";
-import {pinStates} from "@/app/components/pin-states";
-import {Boundaries} from "@/app/components/Boundaries";
 import DetachmentMarkers from "@/app/components/DetachmentMarkers";
-import {DetachmentMarkerDetails, InfoDetails, SchoolMarkerDetails} from "@/app/types/types";
+import OtherYouthOrganisationMarkers from "@/app/components/OtherYouthOrganisationMarkers";
 import SchoolMarkers from "@/app/components/SchoolMarkers";
+import {APIProvider, InfoWindow, Map, Pin} from '@vis.gl/react-google-maps';
+import {Boundaries} from "@/app/components/Boundaries";
+import {
+    DetachmentMarkerDetails,
+    InfoDetails,
+    OtherYouthOrganisationMarkerDetails,
+    SchoolMarkerDetails
+} from "@/app/types/types";
+import {pinStates} from "@/app/components/pin-states";
+import {useCallback, useState,} from "react";
+
+
+
 
 import detachmentsData from "@/app/data/detachments.json";
+import otherYouthOrganisationsData from "@/app/data/other-youth-organisations.json";
 import schoolsData from "@/app/data/schools.json";
+
+
+
 
 export default function Home() {
 
@@ -23,10 +36,12 @@ export default function Home() {
     const [includeClosedDetachments, setIncludeClosedDetachments] = useState<boolean>(false);
     const [includePotentialDetachments, setIncludePotentialDetachments] = useState<boolean>(false);
     const [includeBoundaries, setIncludeBoundaries] = useState<boolean>(false);
+    const [includeOtherYouthOrganisations, setIncludeOtherYouthOrganisations] = useState<boolean>(false);
 
 
     const detachments = detachmentsData as DetachmentMarkerDetails[];
     const schools = schoolsData as SchoolMarkerDetails[];
+    const otherYouthOrganisations = otherYouthOrganisationsData as OtherYouthOrganisationMarkerDetails[];
 
 
     function handleDetachmentStateFilterChange(state: string, include: boolean) {
@@ -181,6 +196,18 @@ export default function Home() {
                                className="select-none w-full py-4 ms-2 text-sm font-medium text-heading">Boundaries</label>
                     </div>
 
+
+                    <div
+                        className="flex items-center ps-4 bg-neutral-primary-soft border border-default rounded-base shadow-2xs">
+                        <input id="show-other-youth-organisations" type="checkbox" value="other-youth-organisations" name="bordered-checkbox"
+                               className="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft"
+                               checked={includeOtherYouthOrganisations}
+                               onChange={(e) => setIncludeOtherYouthOrganisations(e.target.checked)}
+                        />
+                        <label htmlFor="show-other-youth-organisations"
+                               className="select-none w-full py-4 ms-2 text-sm font-medium text-heading">Other youth organisations</label>
+                    </div>
+
                 </div>
 
                 <APIProvider
@@ -195,6 +222,7 @@ export default function Home() {
 
                         <DetachmentMarkers detachments={filteredDetachments} catchmentRadius={catchmentRadius} onMarkerClick={onMarkerClick} />
                         <SchoolMarkers schools={includeSchools ? schools : []} onMarkerClick={onMarkerClick} />
+                        <OtherYouthOrganisationMarkers otherYouthOrganisations={includeOtherYouthOrganisations ? otherYouthOrganisations : []} onMarkerClick={onMarkerClick} />
 
                         {infoWindowShown && selectedMarkerDetails && (
                             <InfoWindow
@@ -212,6 +240,7 @@ export default function Home() {
                 </APIProvider>
 
             </main>
+
             <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
 
             </footer>

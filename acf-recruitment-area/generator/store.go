@@ -7,8 +7,9 @@ import (
 )
 
 type Detachment struct {
-	Id             int            `json:"id"`
-	Name           string         `json:"name"`
+	Id   int    `json:"id"`
+	Name string `json:"name"`
+	//TODO: Change this to town
 	LocalAuthority LocalAuthority `json:"localAuthority"`
 	GeoLocation    GeoLocation    `json:"geoLocation"`
 	Status         string         `json:"status"`
@@ -24,6 +25,13 @@ type LocalAuthority struct {
 	Name string `json:"name"`
 }
 
+type OtherYouthOrganisation struct {
+	Id           int         `json:"id"`
+	Organisation string      `json:"organisation"`
+	Name         string      `json:"name"`
+	GeoLocation  GeoLocation `json:"geoLocation"`
+}
+
 type School struct {
 	Id             int            `json:"id"`
 	Name           string         `json:"name"`
@@ -32,6 +40,12 @@ type School struct {
 	GeoLocation    GeoLocation    `json:"geoLocation"`
 	Type           string         `json:"type"`
 	Pupils         int            `json:"pupils"`
+}
+
+type Town struct {
+	Id             int            `json:"id"`
+	Name           string         `json:"name"`
+	LocalAuthority LocalAuthority `json:"localAuthority"`
 }
 
 type Store struct {
@@ -74,6 +88,38 @@ func (s *Store) GetAllDetachments() ([]Detachment, error) {
 		detachment.LocalAuthority = localAuthority
 		detachment.GeoLocation = geoLocation
 		list = append(list, detachment)
+	}
+	return list, nil
+}
+
+func (s *Store) GetAllOtherYouthOrganisations() ([]OtherYouthOrganisation, error) {
+	rows, err := s.db.Query(
+		`SELECT 
+    				o.id, o.organisation, o.name, o.latitude, o.longitude
+				FROM other_youth_organisations AS o
+				ORDER BY o.name ASC
+		`)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var list []OtherYouthOrganisation
+	for rows.Next() {
+		var otherYouthOrganisation OtherYouthOrganisation
+		var geoLocation GeoLocation
+		if err := rows.Scan(
+				&otherYouthOrganisation.Id,
+				&otherYouthOrganisation.Organisation,
+				&otherYouthOrganisation.Name,
+				&geoLocation.Latitude,
+				&geoLocation.Longitude,
+			); err != nil {
+			return nil, err
+		}
+
+		otherYouthOrganisation.GeoLocation = geoLocation
+		list = append(list, otherYouthOrganisation)
 	}
 	return list, nil
 }

@@ -35,6 +35,14 @@ func main() {
 	}
 	log.Printf("Generated detachments: %v", len(detachments))
 
+
+	otherYouthOrganisations, _ := store.GetAllOtherYouthOrganisations()
+	if err := WriteJSON("_generated/other-youth-organisations.json", otherYouthOrganisations); err != nil {
+		log.Fatalf("Failed to save other youth organisations JSON %v", err)
+	}
+	log.Printf("Generated other youth organisations: %v", len(otherYouthOrganisations))
+
+
 	schools, _ := store.GetAllSchools()
 	if err := WriteJSON("_generated/schools.json", schools); err != nil {
 		log.Fatalf("Failed to save schools JSON %v", err)
